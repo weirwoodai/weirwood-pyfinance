@@ -110,3 +110,6 @@ ENV/
 
 # VSCode
 .vscode
+
+#credentials
+.credentials.json

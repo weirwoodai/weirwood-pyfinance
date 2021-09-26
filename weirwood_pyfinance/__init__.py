@@ -14,3 +14,4 @@ def get_module_version():
 
 
 from .example import Example  # noqa: F401
+from .finten import FinTen

@@ -37,7 +37,7 @@ dev_requirements = [
     "wheel>=0.34.2",
 ]
 
-requirements = []
+requirements = ["yfinance","pandas","httpretty"]
 
 extra_requirements = {
     "setup": setup_requirements,
@@ -75,7 +75,7 @@ setup(
     keywords="weirwood_pyfinance",
     name="weirwood_pyfinance",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires=">=3.7",
+    python_requires=">=3.6",
     setup_requires=setup_requirements,
     test_suite="weirwood_pyfinance/tests",
     tests_require=test_requirements,
