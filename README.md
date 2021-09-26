@@ -10,8 +10,10 @@ Python API for downloading stock prices and fundamental accounting concepts
 
 ## Quick Start
 
+Register your account at https://weirwood.ai for free
+
 ```python
-from weirwood_pyfinance import Finten
+from weirwood_pyfinance import FinTen
 
 finten = FinTen()
 finten.set_login(username="<YOUR USERNAME>",password="<YOUR PASSWORD>")
