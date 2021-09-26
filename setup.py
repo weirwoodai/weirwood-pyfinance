@@ -75,7 +75,7 @@ setup(
     keywords="weirwood_pyfinance",
     name="weirwood_pyfinance",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires=">=3.6",
+    python_requires="=3.9",
     setup_requires=setup_requirements,
     test_suite="weirwood_pyfinance/tests",
     tests_require=test_requirements,
