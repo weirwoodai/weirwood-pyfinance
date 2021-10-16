@@ -9,35 +9,35 @@ with open("README.md") as readme_file:
     readme = readme_file.read()
 
 setup_requirements = [
-    "pytest-runner>=5.2",
+    "pytest-runner",
 ]
 
 test_requirements = [
-    "black>=19.10b0",
-    "codecov>=2.1.4",
-    "flake8>=3.8.3",
-    "flake8-debugger>=3.2.1",
-    "pytest>=5.4.3",
-    "pytest-cov>=2.9.0",
-    "pytest-raises>=0.11",
+    "black",
+    "codecov",
+    "flake8",
+    "flake8-debugger",
+    "pytest",
+    "pytest-cov",
+    "pytest-raises",
 ]
 
 dev_requirements = [
     *setup_requirements,
     *test_requirements,
-    "bump2version>=1.0.1",
-    "coverage>=5.1",
-    "ipython>=7.15.0",
-    "m2r2>=0.2.7",
-    "pytest-runner>=5.2",
-    "Sphinx>=3.4.3",
-    "sphinx_rtd_theme>=0.5.1",
-    "tox>=3.15.2",
-    "twine>=3.1.1",
-    "wheel>=0.34.2",
+    "bump2version",
+    "coverage",
+    "ipython",
+    "m2r2",
+    "pytest-runner",
+    "Sphinx",
+    "sphinx_rtd_theme",
+    "tox",
+    "twine",
+    "wheel",
 ]
 
-requirements = ["yfinance","pandas",""]
+requirements = ["yfinance","pandas","httpretty"]
 
 extra_requirements = {
     "setup": setup_requirements,
@@ -75,7 +75,7 @@ setup(
     keywords="weirwood_pyfinance",
     name="weirwood_pyfinance",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires="==3.9",
+    python_requires=">3.5",
     setup_requires=setup_requirements,
     test_suite="weirwood_pyfinance/tests",
     tests_require=test_requirements,

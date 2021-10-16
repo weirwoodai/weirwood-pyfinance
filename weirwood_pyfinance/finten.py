@@ -62,7 +62,7 @@ class FinTen:
 
         return pd.DataFrame(response.json()["filings"])
 
-    def get_prices(self, ticker, **kwargs):
+    def  get_prices(self, ticker, **kwargs):
 
         df = yf.download(ticker, progress=True, **kwargs)
 
@@ -86,7 +86,6 @@ class FinTen:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
-
         endpoint = self.MACROS_URI + "/get"
         response = requests.get(endpoint + "?macro=" + name, headers=headers, data={})
         macro = pd.DataFrame(response.json()["values"]).set_index("date")

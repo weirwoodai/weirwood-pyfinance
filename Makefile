@@ -44,6 +44,7 @@ clean:  ## clean all build, python, and testing files
 	rm -fr coverage.xml
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
+	rm -rf venv/
 
 build: ## run tox / run tests and lint
 	tox
@@ -57,3 +58,13 @@ gen-docs: ## generate Sphinx HTML documentation, including API docs
 docs: ## generate Sphinx HTML documentation, including API docs, and serve to browser
 	make gen-docs
 	$(BROWSER) docs/_build/html/index.html
+
+env:clean
+	python3 -m virtualenv venv
+
+install-dev:env
+	( \
+       source venv/bin/activate; \
+	   pip install --upgrade pip; \
+       pip install -e .[dev] --no-cache --use-deprecated=legacy-resolver; \
+    )
