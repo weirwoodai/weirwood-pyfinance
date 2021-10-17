@@ -54,17 +54,21 @@ def test_get_filings_with_public_login():
     filings = FinTen().get_filings(ticker="AAPL")
     assert len(filings) > 0
 
+
 def test_get_prices():
     aapl = FinTen().get_prices(ticker="AAPL")
     assert len(aapl) > 0
+
 
 def test_get_prices_last_year():
     aapl = FinTen().get_prices(ticker="AAPL", start="2019-01-01", end="2020-01-01")
     assert len(aapl) == 253
 
+
 def test_unknown_ticker():
     with pytest.raises(InvalidQuery):
         FinTen().get_prices(ticker="asdf")
+
 
 def test_get_macros(finten_login):
     finten = FinTen()

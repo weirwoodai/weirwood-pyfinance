@@ -60,7 +60,7 @@ docs: ## generate Sphinx HTML documentation, including API docs, and serve to br
 	$(BROWSER) docs/_build/html/index.html
 
 env:clean
-	python3 -m virtualenv venv
+	python -m virtualenv venv
 
 install-dev:env
 	( \

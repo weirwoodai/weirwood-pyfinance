@@ -62,7 +62,7 @@ class FinTen:
 
         return pd.DataFrame(response.json()["filings"])
 
-    def  get_prices(self, ticker, **kwargs):
+    def get_prices(self, ticker, **kwargs):
 
         df = yf.download(ticker, progress=True, **kwargs)
 
