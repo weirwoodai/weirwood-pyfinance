@@ -29,6 +29,8 @@ jobs:
                   python -m pip install --upgrade pip
                   pip install .[test]
             - name: Test with pytest
+              PYFINANCE_USERNAME: ${{ secrets.PYFINANCE_USERNAME }}
+              PYFINANCE_PASSWORD: ${{ secrets.PYFINANCE_PASSWORD }}
               run: |
                   pytest --cov-report xml --cov=weirwood_pyfinance weirwood_pyfinance/tests/
             - name: Upload codecov

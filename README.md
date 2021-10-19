@@ -24,7 +24,7 @@ prices = FinTen().get_prices(ticker="AAPL")
 
 ## Installation
 
-**Stable Release:** `pip install weirwood_pyfinance`<br>
+**Stable Release:** `pip install weirwood-pyfinance`<br>
 **Development Head:** `pip install git+https://github.com/weirwoodai/weirwood_pyfinance.git`
 
 **MIT license**

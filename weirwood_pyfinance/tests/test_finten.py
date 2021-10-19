@@ -1,14 +1,16 @@
+import os
 import pytest
 from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
 import json
 import httpretty
+from dotenv import load_dotenv
+load_dotenv()
+
+USER=os.environ['PYFINANCE_USERNAME']
+PASSWORD=os.environ['PYFINANCE_USERNAME']
 
 
-@pytest.fixture
-def finten_login():
-    with open("./.credentials.json") as f:
-        finten_login = json.load(f)
-    return finten_login
+
 
 
 def test_is_reachable():
@@ -25,15 +27,15 @@ def test_login__invalid_credentials():
         finten._login()
 
 
-def test_login(finten_login):
+def test_login():
     finten = FinTen()
-    finten.set_login(**finten_login)
+    finten.set_login(username=USER, password=PASSWORD)
     finten._login()
 
 
-def test_get_filings(finten_login):
+def test_get_filings():
     finten = FinTen()
-    finten.set_login(**finten_login)
+    finten.set_login(username=USER, password=PASSWORD)
     filings = finten.get_filings(ticker="AAPL")
     assert len(filings) > 0
 
@@ -70,9 +72,9 @@ def test_unknown_ticker():
         FinTen().get_prices(ticker="asdf")
 
 
-def test_get_macros(finten_login):
+def test_get_macros():
     finten = FinTen()
-    finten.set_login(**finten_login)
+    finten.set_login(username=USER, password=PASSWORD)
     available_macros = finten.list_macros()
     assert available_macros == ["DGORDER", "ACDGNO", "DMOTRC1Q027SBEA", "IPDCONGD"]
 

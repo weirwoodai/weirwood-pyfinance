@@ -20,6 +20,7 @@ test_requirements = [
     "pytest",
     "pytest-cov",
     "pytest-raises",
+    "python-dotenv"
 ]
 
 dev_requirements = [
