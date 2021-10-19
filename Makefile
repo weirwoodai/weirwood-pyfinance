@@ -46,8 +46,8 @@ clean:  ## clean all build, python, and testing files
 	rm -fr .pytest_cache
 	rm -rf venv/
 
-build: ## run tox / run tests and lint
-	tox
+test: ## run tox / run tests and lint
+	tox .
 
 gen-docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/weirwood_pyfinance*.rst
@@ -68,3 +68,6 @@ install-dev:env
 	   pip install --upgrade pip; \
        pip install -e .[dev] --no-cache --use-deprecated=legacy-resolver; \
     )
+
+build:
+	python setup.py sdist
