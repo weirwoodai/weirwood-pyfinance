@@ -33,7 +33,8 @@ jobs:
                   PYFINANCE_USERNAME: ${{ secrets.PYFINANCE_USERNAME }}
                   PYFINANCE_PASSWORD: ${{ secrets.PYFINANCE_PASSWORD }}
               run: |
-                  PYFINANCE_USERNAME=$PYFINANCE_USERNAME PYFINANCE_PASSWORD=$PYFINANCE_PASSWORD python -m pytest --cov-report xml --cov=weirwood_pyfinance weirwood_pyfinance/tests/
+                  echo $PYFINANCE_USERNAME
+                  python -m pytest --cov-report xml --cov=weirwood_pyfinance weirwood_pyfinance/tests/
             - name: Upload codecov
               uses: codecov/codecov-action@v1
 
