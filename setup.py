@@ -20,7 +20,8 @@ test_requirements = [
     "pytest",
     "pytest-cov",
     "pytest-raises",
-    "python-dotenv"
+    "python-dotenv",
+    "isort",
 ]
 
 dev_requirements = [
@@ -38,7 +39,7 @@ dev_requirements = [
     "wheel",
 ]
 
-requirements = ["yfinance","pandas","httpretty"]
+requirements = ["yfinance", "pandas", "matplotlib"]
 
 extra_requirements = {
     "setup": setup_requirements,
@@ -47,7 +48,7 @@ extra_requirements = {
     "all": [
         *requirements,
         *dev_requirements,
-    ]
+    ],
 }
 
 setup(
@@ -64,9 +65,7 @@ setup(
     ],
     description="Python API for downloading stock prices and fundamental accounting concepts",
     entry_points={
-        "console_scripts": [
-            "my_example=weirwood_pyfinance.bin.my_example:main"
-        ],
+        "console_scripts": ["my_example=weirwood_pyfinance.bin.my_example:main"],
     },
     install_requires=requirements,
     license="MIT license",
@@ -76,7 +75,7 @@ setup(
     keywords="weirwood_pyfinance",
     name="weirwood_pyfinance",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
-    python_requires=">3.5",
+    # python_requires=">3.5",
     setup_requires=setup_requirements,
     test_suite="weirwood_pyfinance/tests",
     tests_require=test_requirements,
@@ -84,6 +83,6 @@ setup(
     url="https://github.com/weirwoodai/weirwood_pyfinance",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
-    version="0.0.1",
+    version="0.0.2",
     zip_safe=False,
 )

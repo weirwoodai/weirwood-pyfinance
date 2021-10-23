@@ -13,4 +13,4 @@ def get_module_version():
     return __version__
 
 
-from .finten import FinTen
+from .finten import FinTen  # noqa

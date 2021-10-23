@@ -1,5 +1,5 @@
-import requests
 import pandas as pd
+import requests
 import yfinance as yf
 
 
@@ -17,6 +17,7 @@ class FinTen:
         self.LOGIN_URI = self.URI + "/users/login"
         self.FILINGS_URI = self.URI + "/company/filings"
         self.MACROS_URI = self.URI + "/fred"
+        self.TICKERS_URI = self.URI + "/company/tickers"
         self._token = None
         self._username = "pyfinance"
         self._password = "pyfinance"
@@ -38,7 +39,7 @@ class FinTen:
         self._token = None
 
     def _login(self):
-        if (self._username == None) or (self._password == None):
+        if (self._username is None) or (self._password is None):
             raise InvalidCredentials("username or password has not been set!")
 
         payload = f"username={self._username}&password={self._password}"
@@ -51,7 +52,7 @@ class FinTen:
         self._token = response.json()["token"]
 
     def get_filings(self, ticker):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -60,7 +61,11 @@ class FinTen:
             self.FILINGS_URI + "?ticker=" + ticker, headers=headers, data={}
         )
 
-        return pd.DataFrame(response.json()["filings"])
+        filings = pd.DataFrame(response.json()["filings"])
+        company_info = response.json()["companyInfo"]
+
+        filings = filings.assign(**company_info)
+        return filings
 
     def get_prices(self, ticker, **kwargs):
 
@@ -71,7 +76,7 @@ class FinTen:
         return df
 
     def list_macros(self):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -82,7 +87,7 @@ class FinTen:
         return response.json()["names"]
 
     def get_macro(self, name):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -92,3 +97,12 @@ class FinTen:
         macro.index = pd.to_datetime(macro.index)
         macro.columns = [name]
         return macro
+
+    def get_tickers(self):
+        if self._token is None:
+            self._login()
+
+        headers = {"Authorization": f"Bearer {self._token}"}
+        endpoint = self.TICKERS_URI
+        response = requests.get(endpoint, headers=headers, data={})
+        return pd.DataFrame(response.json()["tickers"])

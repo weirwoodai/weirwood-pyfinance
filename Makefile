@@ -46,8 +46,8 @@ clean:  ## clean all build, python, and testing files
 	rm -fr .pytest_cache
 	rm -rf venv/
 
-build: ## run tox / run tests and lint
-	tox
+test: ## run tox / run tests and lint
+	tox .
 
 gen-docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/weirwood_pyfinance*.rst
@@ -68,3 +68,25 @@ install-dev:env
 	   pip install --upgrade pip; \
        pip install -e .[dev] --no-cache --use-deprecated=legacy-resolver; \
     )
+
+# Simulation of github actions in local
+isort:
+	python -m isort .
+
+black:
+	python -m black .
+
+flake8:
+	python -m flake8 weirwood_pyfinance --count --verbose --show-source --statistics
+
+test:
+	python -m pytest --verbose .
+
+check_all:
+	(\
+	make isort;\
+	make black;\
+	make flake8;\
+	make test;\
+	)
+
