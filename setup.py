@@ -39,7 +39,7 @@ dev_requirements = [
     "wheel",
 ]
 
-requirements = ["yfinance", "pandas"]
+requirements = ["yfinance", "pandas", "matplotlib"]
 
 extra_requirements = {
     "setup": setup_requirements,
