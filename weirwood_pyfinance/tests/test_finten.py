@@ -40,18 +40,6 @@ def test_get_filings():
     assert len(filings) > 0
 
 
-def test_get_filings_with_public_login():
-    # httpretty.enable()
-    # httpretty.register_uri(
-    #     httpretty.GET,
-    #     "https://finten.weirwood.ai/company/filings?ticker=AAPL",
-    #     body='{"filings": [{"foo": "bar", "manchu": "massachusets"}]}',
-    # )
-    # httpretty.register_uri(
-    #     httpretty.POST,
-    #     "https://finten.weirwood.ai/users/login",
-    #     body='{"token": "test"}',
-    # )
 
     filings = FinTen().get_filings(ticker="AAPL")
     assert len(filings) > 0
