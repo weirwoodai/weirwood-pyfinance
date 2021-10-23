@@ -41,6 +41,8 @@ def test_get_filings():
     filings = FinTen().get_filings(ticker="AAPL")
     assert len(filings) > 0
 
+    assert len(filings.columns) == 29
+
 
 def test_get_prices():
     aapl = FinTen().get_prices(ticker="AAPL")

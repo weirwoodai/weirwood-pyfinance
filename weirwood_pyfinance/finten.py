@@ -61,7 +61,11 @@ class FinTen:
             self.FILINGS_URI + "?ticker=" + ticker, headers=headers, data={}
         )
 
-        return pd.DataFrame(response.json()["filings"])
+        filings = pd.DataFrame(response.json()["filings"])
+        company_info = response.json()["companyInfo"]
+
+        filings = filings.assign(**company_info)
+        return filings
 
     def get_prices(self, ticker, **kwargs):
 
