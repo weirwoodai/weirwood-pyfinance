@@ -2,7 +2,6 @@ import os
 import pytest
 from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
 import json
-import httpretty
 from dotenv import load_dotenv
 
 load_dotenv()
