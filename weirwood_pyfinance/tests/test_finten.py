@@ -4,13 +4,11 @@ from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
 import json
 import httpretty
 from dotenv import load_dotenv
+
 load_dotenv()
 
-USER=os.environ['PYFINANCE_USERNAME']
-PASSWORD=os.environ['PYFINANCE_USERNAME']
-
-
-
+USER = os.environ["PYFINANCE_USERNAME"]
+PASSWORD = os.environ["PYFINANCE_USERNAME"]
 
 
 def test_is_reachable():
@@ -38,9 +36,6 @@ def test_get_filings():
     finten.set_login(username=USER, password=PASSWORD)
     filings = finten.get_filings(ticker="AAPL")
     assert len(filings) > 0
-
-
-
     filings = FinTen().get_filings(ticker="AAPL")
     assert len(filings) > 0
 

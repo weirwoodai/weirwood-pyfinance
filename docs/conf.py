@@ -60,9 +60,9 @@ templates_path = ["_templates"]
 # You can specify multiple suffix as a list of string:
 #
 source_suffix = {
-        ".rst": "restructuredtext",
-        ".txt": "markdown",
-        ".md": "markdown",
+    ".rst": "restructuredtext",
+    ".txt": "markdown",
+    ".md": "markdown",
 }
 
 # The master toctree document.
@@ -70,7 +70,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"Weirwood PyFinance"
-copyright = u'2021, Alex Encalado Masia'
+copyright = u"2021, Alex Encalado Masia"
 author = u"Alex Encalado Masia"
 
 # The version info for the project you"re documenting, acts as replacement
@@ -135,15 +135,12 @@ latex_elements = {
     # The paper size ("letterpaper" or "a4paper").
     #
     # "papersize": "letterpaper",
-
     # The font size ("10pt", "11pt" or "12pt").
     #
     # "pointsize": "10pt",
-
     # Additional stuff for the LaTeX preamble.
     #
     # "preamble": "",
-
     # Latex figure (float) alignment
     #
     # "figure_align": "htbp",
@@ -153,9 +150,13 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "weirwood_pyfinance.tex",
-     u"Weirwood PyFinance Documentation",
-     u"Alex Encalado Masia", "manual"),
+    (
+        master_doc,
+        "weirwood_pyfinance.tex",
+        u"Weirwood PyFinance Documentation",
+        u"Alex Encalado Masia",
+        "manual",
+    ),
 ]
 
 
@@ -164,9 +165,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "weirwood_pyfinance",
-     u"Weirwood PyFinance Documentation",
-     [author], 1)
+    (master_doc, "weirwood_pyfinance", u"Weirwood PyFinance Documentation", [author], 1)
 ]
 
 
@@ -176,10 +175,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, "weirwood_pyfinance",
-     u"Weirwood PyFinance Documentation",
-     author,
-     "weirwood_pyfinance",
-     "One line description of project.",
-     "Miscellaneous"),
+    (
+        master_doc,
+        "weirwood_pyfinance",
+        u"Weirwood PyFinance Documentation",
+        author,
+        "weirwood_pyfinance",
+        "One line description of project.",
+        "Miscellaneous",
+    ),
 ]
