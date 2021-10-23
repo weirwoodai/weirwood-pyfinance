@@ -1,8 +1,10 @@
-import os
-import pytest
-from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
 import json
+import os
+
+import pytest
 from dotenv import load_dotenv
+
+from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
 
 load_dotenv()
 
