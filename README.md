@@ -1,7 +1,6 @@
 # Weirwood PyFinance
 
 [![Build Status](https://github.com/weirwoodai/weirwood_pyfinance/workflows/Build%20Main/badge.svg)](https://github.com/weirwoodai/weirwood_pyfinance/actions)
-[![Documentation](https://github.com/weirwoodai/weirwood_pyfinance/workflows/Documentation/badge.svg)](https://weirwoodai.github.io/weirwood_pyfinance/)
 
 Python API for downloading stock prices and fundamental accounting concepts
 
