@@ -30,8 +30,8 @@ jobs:
                   pip install .[test]
             - name: Test with pytest
               env:
-                  PYFINANCE_USERNAME: ${{ secrets.PYFINANCE_USERNAME }}
-                  PYFINANCE_PASSWORD: ${{ secrets.PYFINANCE_PASSWORD }}
+                  PYFINANCE_USERNAME: "${{ secrets.PYFINANCE_USERNAME }}"
+                  PYFINANCE_PASSWORD: "${{ secrets.PYFINANCE_PASSWORD }}"
               run: |
                   pytest --cov-report xml --cov=weirwood_pyfinance weirwood_pyfinance/tests/
             - name: Upload codecov
@@ -56,27 +56,3 @@ jobs:
             - name: Check with black
               run: |
                   black --check weirwood_pyfinance
-
-    publish:
-        if: "contains(github.event.head_commit.message, 'Bump version')"
-        needs: [test, lint]
-        runs-on: ubuntu-latest
-
-        steps:
-            - uses: actions/checkout@v1
-            - name: Set up Python
-              uses: actions/setup-python@v1
-              with:
-                  python-version: 3.9
-            - name: Install Dependencies
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install setuptools wheel
-            - name: Build Package
-              run: |
-                  python setup.py sdist bdist_wheel
-            - name: Publish to PyPI
-              uses: pypa/gh-action-pypi-publish@master
-              with:
-                  user: faradaydetu
-                  password: ${{ secrets.PYPI_TOKEN }}
