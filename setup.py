@@ -21,6 +21,7 @@ test_requirements = [
     "pytest-cov",
     "pytest-raises",
     "python-dotenv",
+    "isort",
 ]
 
 dev_requirements = [
@@ -38,7 +39,7 @@ dev_requirements = [
     "wheel",
 ]
 
-requirements = ["yfinance", "pandas", "httpretty"]
+requirements = ["yfinance", "pandas"]
 
 extra_requirements = {
     "setup": setup_requirements,
