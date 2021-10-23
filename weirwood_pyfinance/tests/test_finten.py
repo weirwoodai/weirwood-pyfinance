@@ -3,7 +3,8 @@ import os
 import pytest
 from dotenv import load_dotenv
 
-from weirwood_pyfinance.finten import FinTen, InvalidCredentials, InvalidQuery
+from weirwood_pyfinance import FinTen
+from weirwood_pyfinance.finten import InvalidCredentials, InvalidQuery
 
 load_dotenv()
 
@@ -15,7 +16,7 @@ def test_is_reachable():
     finten = FinTen()
     assert finten._is_reachable()
     finten.URI = "https://www.google.com"
-    assert finten._is_reachable() == False
+    assert finten._is_reachable() is False
 
 
 def test_login__invalid_credentials():
@@ -67,6 +68,7 @@ def test_get_macros():
 
     assert dgorder.iloc[0].values[0] == 114535
     assert acdgno.iloc[0].values[0] == 19863
+
 
 def test_get_tickers():
     finten = FinTen()

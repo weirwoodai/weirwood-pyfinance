@@ -39,7 +39,7 @@ class FinTen:
         self._token = None
 
     def _login(self):
-        if (self._username == None) or (self._password == None):
+        if (self._username is None) or (self._password is None):
             raise InvalidCredentials("username or password has not been set!")
 
         payload = f"username={self._username}&password={self._password}"
@@ -52,7 +52,7 @@ class FinTen:
         self._token = response.json()["token"]
 
     def get_filings(self, ticker):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -72,7 +72,7 @@ class FinTen:
         return df
 
     def list_macros(self):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -83,7 +83,7 @@ class FinTen:
         return response.json()["names"]
 
     def get_macro(self, name):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
@@ -95,11 +95,10 @@ class FinTen:
         return macro
 
     def get_tickers(self):
-        if self._token == None:
+        if self._token is None:
             self._login()
 
         headers = {"Authorization": f"Bearer {self._token}"}
         endpoint = self.TICKERS_URI
         response = requests.get(endpoint, headers=headers, data={})
         return pd.DataFrame(response.json()["tickers"])
-
