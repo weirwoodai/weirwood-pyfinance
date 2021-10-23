@@ -69,5 +69,24 @@ install-dev:env
        pip install -e .[dev] --no-cache --use-deprecated=legacy-resolver; \
     )
 
-build:
-	python setup.py sdist
+# Simulation of github actions in local
+isort:
+	python -m isort .
+
+black:
+	python -m black .
+
+flake8:
+	python -m flake8 weirwood_pyfinance --count --verbose --show-source --statistics
+
+test:
+	python -m pytest --verbose .
+
+check_all:
+	(\
+	make isort;\
+	make black;\
+	make flake8;\
+	make test;\
+	)
+
