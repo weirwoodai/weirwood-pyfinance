@@ -17,6 +17,7 @@ class FinTen:
         self.LOGIN_URI = self.URI + "/users/login"
         self.FILINGS_URI = self.URI + "/company/filings"
         self.MACROS_URI = self.URI + "/fred"
+        self.TICKERS_URI = self.URI + "/company/tickers"
         self._token = None
         self._username = "pyfinance"
         self._password = "pyfinance"
@@ -92,3 +93,13 @@ class FinTen:
         macro.index = pd.to_datetime(macro.index)
         macro.columns = [name]
         return macro
+
+    def get_tickers(self):
+        if self._token == None:
+            self._login()
+
+        headers = {"Authorization": f"Bearer {self._token}"}
+        endpoint = self.TICKERS_URI
+        response = requests.get(endpoint, headers=headers, data={})
+        return pd.DataFrame(response.json()["tickers"])
+

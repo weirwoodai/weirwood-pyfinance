@@ -34,6 +34,7 @@ def test_login():
 def test_get_filings():
     finten = FinTen()
     finten.set_login(username=USER, password=PASSWORD)
+
     filings = finten.get_filings(ticker="AAPL")
     assert len(filings) > 0
     filings = FinTen().get_filings(ticker="AAPL")
@@ -66,3 +67,9 @@ def test_get_macros():
 
     assert dgorder.iloc[0].values[0] == 114535
     assert acdgno.iloc[0].values[0] == 19863
+
+def test_get_tickers():
+    finten = FinTen()
+    finten.set_login(username=USER, password=PASSWORD)
+    all_tickers = finten.get_tickers()
+    assert len(all_tickers) == 9434
