@@ -39,7 +39,6 @@ If you don't have an account you can still access using the free tier
 from weirwood_pyfinance import FinTen
 
 finten = FinTen()
-finten.set_login(username="<YOUR USERNAME>",password="<YOUR PASSWORD>")
 filings = finten.get_filings(ticker="AAPL")
 prices = finten.get_prices(ticker="AAPL")
 ```
